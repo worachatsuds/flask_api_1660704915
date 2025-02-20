@@ -1,8 +1,8 @@
 name: Build and deploy Python app to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: 'pae-devsecops'   # set this to your application's name
-  PYTHON_VERSION: '3.12'               
+  AZURE_WEBAPP_NAME: 'oam-devsecops'   # set this to your application's name
+  PYTHON_VERSION: '3.9'               
 on:
   push:
     branches:
@@ -11,10 +11,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-     permissions:
-      actions: read
-      contents: read
-      security-events: write
+    permissions:
+     actions: read
+     contents: read
+     security-events: write
     steps:
       - uses: actions/checkout@v4
 
@@ -27,6 +27,7 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          
       - name: Install dependencies
         run: pip install -r requirements.txt
 
